@@ -39,9 +39,14 @@ dotnet run C:\mydir\input.txt false
 
 Analyze the frequency of characters in C:\mydir\input.txt, not considering case sensitivity.
 
+### Test files
+* sample.txt - Short, two line file
+* big.txt -Large, The Project Gutenberg EBook of The Adventures of Sherlock Holmes
+by Sir Arthur Conan Doyle
+
 ## To do
 
 - [ ] Test on different platforms
 - [ ] Use linq to make mapping function cleaner
 - [ ] Add more error handling
-- [ ] Perform tests on larger files to test efficiency
+- [x] Perform tests on larger files to test efficiency
