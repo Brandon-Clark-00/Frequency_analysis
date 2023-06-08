@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Frequency_analysis
 {
@@ -7,18 +8,33 @@ namespace Frequency_analysis
     {
         static void Main(string[] args)
         {
-            if(args.Length>0)
+            bool caseSensitive;
+            string input;
+            if (args.Length == 0)
             {
-                Console.WriteLine("Hello " + args[0] + "!");
+                Console.WriteLine("missing arguments");
+                return;
+            }
+            else if (args.Length == 1)
+            {
+                input = File.ReadAllText(args[0]);
+
             }
             else
             {
-                Console.WriteLine("Hello user");
+                input = File.ReadAllText(args[0]);
+                caseSensitive = false;
             }
+
+            PrintList(ParseString(input));
             
         }
+        static List<string> ParseString(string input)
+        {
+            return new List<string>(input.Split(' '));
+        }
 
-        void PrintList(List<string> toPrint)
+        static void PrintList(List<string> toPrint)
         {
             foreach (var item in toPrint)
             {
