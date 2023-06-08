@@ -6,6 +6,10 @@
     "Arg": {
       "commandName": "Project",
       "commandLineArgs": "C:\\Users\\Brandon\\source\\repos\\Frequency_analysis\\sample.txt a"
+    },
+    "Big": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\Brandon\\Downloads\\Hashtables\\Hashtables\\big.txt a"
     }
   }
 }
