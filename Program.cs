@@ -10,7 +10,7 @@ namespace Frequency_analysis
     {
         static void Main(string[] args)
         {
-            bool caseSensitive;
+            bool caseSensitive = true;
             string input;
             if (args.Length == 0)
             {
@@ -28,31 +28,25 @@ namespace Frequency_analysis
                 caseSensitive = false;
             }
 
-
-            Dictionary<char, int> freqMap = ParseString(input);
-            PrintMap(freqMap);
+            Dictionary<string, int> freqMap = ParseString(input, caseSensitive);
+            Console.WriteLine(args[0]);
+            PrintMap(freqMap, caseSensitive);
             
         }
 
 
-
-      /*  static List<string> ParseString(string input)
+        static Dictionary<string,int> ParseString(string input, bool caseSensitive)
         {
-            return new List<string>(input.Split(' '));
-        }
-
-        static void PrintList(List<string> toPrint)
-        {
-            foreach (var item in toPrint)
+            Dictionary<string,int> map;
+            if (caseSensitive)
             {
-                Console.WriteLine(item);
+                 map = new Dictionary<string, int>();
             }
-        }*/
-
-
-        static Dictionary<char,int> ParseString(string input)
-        {
-            var map = new Dictionary<char, int>();
+            else
+            {
+                 map = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+            }
+            
             
             foreach (var item in input)
             {
@@ -63,27 +57,36 @@ namespace Frequency_analysis
                     //Console.WriteLine("Whitespace char");
                     continue;
                 }
-                if (map.ContainsKey(item))
+                if (map.ContainsKey(item.ToString()))
                 {
-                    map[item] += 1;
+                    map[item.ToString()] += 1;
                     //Console.WriteLine(item + ":" + map[item]);
                 }
                 else
                 {
-                    map.Add(item, 1);
+                    map.Add(item.ToString(), 1);
                     //Console.WriteLine(item + ":" + map[item]);
                 }
             }
 
             return map;
         }
-        static void PrintMap(Dictionary<char,int> toPrint)
+        static void PrintMap(Dictionary<string,int> toPrint, bool caseSensitive)
         {
             int totalChars = toPrint.Sum(x => x.Value);
             Console.WriteLine("Total characters: " + totalChars);
-            foreach (KeyValuePair<char, int> pair in toPrint.OrderByDescending(i => i.Value))
+
+            foreach (KeyValuePair<string, int> pair in toPrint.OrderByDescending(i => i.Value).Take(10))
             {
-                Console.WriteLine(pair.Key + ":" + pair.Value);
+                if (true)
+                {
+                    Console.WriteLine(pair.Key + " (" + pair.Value + ")");
+                }
+                else
+                {
+                    Console.WriteLine(pair.Key.ToLower() + " (" + pair.Value + ")");
+                }
+                
             }
 
         }
