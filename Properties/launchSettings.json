@@ -1,8 +1,7 @@
 {
   "profiles": {
     "Frequency_analysis": {
-      "commandName": "Project",
-      "commandLineArgs": "Brandon"
+      "commandName": "Project"
     },
     "Arg": {
       "commandName": "Project",

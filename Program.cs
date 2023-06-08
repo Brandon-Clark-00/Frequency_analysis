@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Text.RegularExpressions;
+
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace Frequency_analysis
 {
@@ -11,18 +12,19 @@ namespace Frequency_analysis
         static void Main(string[] args)
         {
             bool caseSensitive = true;
-            string input;
-            if (args.Length == 0)
+            string input="";
+            if (args.Length == 0) // Ends 
             {
-                Console.WriteLine("missing arguments");
-                return;
+                Console.WriteLine("Missing arguments. Please enter essential filepath argument and optional case sensitivity argument (true by default)");
+                Thread.Sleep(5000);
+                Environment.Exit(0);
             }
             else if (args.Length == 1)
             {
                 input = File.ReadAllText(args[0]);
 
             }
-            else
+            else // more than one argument makes it non case sensitive
             {
                 input = File.ReadAllText(args[0]);
                 caseSensitive = false;
@@ -31,54 +33,49 @@ namespace Frequency_analysis
             Dictionary<string, int> freqMap = ParseString(input, caseSensitive);
             Console.WriteLine(args[0]);
             PrintMap(freqMap, caseSensitive);
-            
+
         }
 
 
-        static Dictionary<string,int> ParseString(string input, bool caseSensitive)
+        static Dictionary<string, int> ParseString(string input, bool caseSensitive)
         {
-            Dictionary<string,int> map;
+            Dictionary<string, int> map;
             if (caseSensitive)
             {
-                 map = new Dictionary<string, int>();
+                map = new Dictionary<string, int>();
             }
             else
             {
-                 map = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+                map = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
             }
-            
-            
+
             foreach (var item in input)
             {
-                int value;
-                Match m = Regex.Match(item.ToString(), @"\s|\r|\n|\t");
-                if (m.Success)
+               
+                if (Char.IsWhiteSpace(item))
                 {
-                    //Console.WriteLine("Whitespace char");
                     continue;
                 }
                 if (map.ContainsKey(item.ToString()))
                 {
                     map[item.ToString()] += 1;
-                    //Console.WriteLine(item + ":" + map[item]);
                 }
                 else
                 {
                     map.Add(item.ToString(), 1);
-                    //Console.WriteLine(item + ":" + map[item]);
                 }
             }
 
             return map;
         }
-        static void PrintMap(Dictionary<string,int> toPrint, bool caseSensitive)
+        static void PrintMap(Dictionary<string, int> toPrint, bool caseSensitive)
         {
             int totalChars = toPrint.Sum(x => x.Value);
             Console.WriteLine("Total characters: " + totalChars);
 
             foreach (KeyValuePair<string, int> pair in toPrint.OrderByDescending(i => i.Value).Take(10))
             {
-                if (true)
+                if (caseSensitive)
                 {
                     Console.WriteLine(pair.Key + " (" + pair.Value + ")");
                 }
@@ -86,7 +83,7 @@ namespace Frequency_analysis
                 {
                     Console.WriteLine(pair.Key.ToLower() + " (" + pair.Value + ")");
                 }
-                
+
             }
 
         }
