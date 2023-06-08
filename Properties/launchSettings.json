@@ -5,7 +5,7 @@
     },
     "Arg": {
       "commandName": "Project",
-      "commandLineArgs": "C:\\Users\\Brandon\\source\\repos\\Frequency_analysis\\sample.txt"
+      "commandLineArgs": "C:\\Users\\Brandon\\source\\repos\\Frequency_analysis\\sample.txt a"
     }
   }
 }
