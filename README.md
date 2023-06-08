@@ -14,7 +14,9 @@ Clone the repository
 git clone https://github.com/username/Frequency-Analysis.git
 ```
 In the project directory, run the following command to build the project:
+```posh
 dotnet build
+```
 
 ## Usage
 ### Syntax
@@ -37,3 +39,8 @@ dotnet run C:\mydir\input.txt false
 
 Analyze the frequency of characters in C:\mydir\input.txt, not considering case sensitivity.
 
+## To do
+
+- [ ] Test on different platforms
+- [ ] Use linq to make mapping function cleaner
+- [ ] Add more error handling
