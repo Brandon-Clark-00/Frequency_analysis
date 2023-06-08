@@ -44,3 +44,4 @@ Analyze the frequency of characters in C:\mydir\input.txt, not considering case 
 - [ ] Test on different platforms
 - [ ] Use linq to make mapping function cleaner
 - [ ] Add more error handling
+- [ ] Perform tests on larger files to test efficiency
