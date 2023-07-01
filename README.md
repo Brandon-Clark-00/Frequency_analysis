@@ -1,3 +1,52 @@
-# Frequency_analysis
+# Frequency Analysis
 
-Takes a txt file and finds the frequency of each non-whitespace character printing the total amount of characters and the top 10 most common characters alongside their frequency
+Frequency Analysis is a command-line tool that analyzes the frequency of characters in a given text file. It outputs a list of the top 10 most frequently occurring characters and their counts.
+
+## Getting Started
+
+These instructions will guide you through using the Frequency Analysis tool.
+
+## Prerequisites
+.NET Core 3.1 SDK
+## Installation
+Clone the repository
+```posh
+git clone https://github.com/username/Frequency-Analysis.git
+```
+In the project directory, run the following command to build the project:
+```posh
+dotnet build
+```
+
+## Usage
+### Syntax
+```posh
+dotnet run <file_path> [<case_sensitive>]
+```
+
+file_path: The path of the text file to analyze.
+case_sensitive: Optional argument. If set to "false", the analysis will not consider case sensitivity.
+### Examples
+```posh
+dotnet run C:\mydir\input.txt
+```
+
+Analyze the frequency of characters in C:\mydir\input.txt, considering case sensitivity.
+
+```posh
+dotnet run C:\mydir\input.txt false
+```
+
+Analyze the frequency of characters in C:\mydir\input.txt, not considering case sensitivity.
+
+### Test files
+* sample.txt - Short, two line file
+* big.txt -Large, The Project Gutenberg EBook of The Adventures of Sherlock Holmes
+by Sir Arthur Conan Doyle
+
+## To do
+
+- [ ] Test on different platforms
+- [ ] Use linq to make mapping function cleaner
+- [ ] Add more error handling
+- [x] Perform tests on larger files to test efficiency
