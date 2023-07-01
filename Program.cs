@@ -34,6 +34,8 @@ namespace Frequency_analysis
             Console.WriteLine(args[0]);
             PrintMap(freqMap, caseSensitive);
 
+            return;
+
         }
 
 
